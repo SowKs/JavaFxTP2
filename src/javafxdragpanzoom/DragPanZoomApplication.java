@@ -46,7 +46,7 @@ public class DragPanZoomApplication extends Application {
         root.getChildren().add(panAndZoomPane);
         
         // Forme sur laquelle on veut faire du drag
-        AbstractHomotheticPaneRectangle rect1 = new HomotheticPaneRectangleStandard();
+        AbstractHomotheticPaneRectangle rect1 = new HomotheticPaneRectangleStandard(panAndZoomPane.scaleProperty());
         rect1.setLayoutX(450);
         rect1.setLayoutY(450);
         panAndZoomPane.getChildren().add(rect1);

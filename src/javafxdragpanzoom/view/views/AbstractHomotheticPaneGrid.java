@@ -1,5 +1,7 @@
 package javafxdragpanzoom.view.views;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
@@ -36,5 +38,17 @@ public abstract class AbstractHomotheticPaneGrid extends AbstractHomotheticPane 
         for (int i = GRID_OFFSET ; i < HEIGHT ; i += GRID_OFFSET) {
             grid.getChildren().add(new Line(i, 1 , i, HEIGHT));
         }
+        
+        scaleProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                for (Node node : grid.getChildren()) {
+                    if (node.getClass().equals(Line.class)) {
+                        Line line = (Line) node;
+                        line.setStrokeWidth(1/getScale());
+                    }
+                }
+            }
+        });
     }
 }

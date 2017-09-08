@@ -23,7 +23,7 @@ public class HomotheticPaneZoomManager {
     
     private void addHandlerZoom() {
         pane.addEventHandler(ScrollEvent.SCROLL, (event) -> {
-            pane.setScale(pane.getScale()*Math.pow(1.01, event.getDeltaY()), event.getX(), event.getY());
+            pane.setScale(pane.getScale()*Math.pow(1.005, event.getDeltaY()), event.getX(), event.getY());
         });
     }
 }
